@@ -3,8 +3,8 @@
 # wilderfield
 The wilderfield library is a collection of header only libraries I've developed over time for various purposes.
 
-## wilderfield::priority_map
-The `priority_map` class is designed to manage a set of elements, each with a priority,  
+## wilderfield::PriorityMap
+The `PriorityMap` class is designed to manage a set of elements, each with a priority,  
 allowing for efficient retrieval, updating, and tracking of elements based on their priority.  
   
 It is designed to provide constant time access to the element with the highest priority,  
@@ -14,18 +14,18 @@ Setting priority for a given element directly is O(n).
   
 The underlying implementation is a doubly linked list backed by a hashmap.  
   
-The source code for this project is available on GitHub: [wilderfield/priority_map](https://github.com/wilderfield/priority_map)
+The source code for this project is available on GitHub: [wilderfield/wilderfield](https://github.com/wilderfield/wilderfield)
 
 ## usage
-Here is a basic example of how to use the `priority_map` class:
+Here is a basic example of how to use the `PriorityMap` class:
 ```cpp
-#include "wilderfield/priority_map.hpp"
+#include "wilderfield/PriorityMap.hpp"
 #include <iostream>
 
 int main() {
 
-  // Define a priority_map instance
-  wilderfield::priority_map<int, int> pmap;
+  // Define a PriorityMap instance
+  wilderfield::PriorityMap<int, int> pmap;
 
   // Increment priority of key 7
   ++pmap[7];
@@ -43,7 +43,7 @@ int main() {
 Below is an example application illustrating topological sort with Khan's algorithm and a priority map:
 
 ```cpp
-#include "wilderfield/priority_map.hpp"
+#include "wilderfield/PriorityMap.hpp"
 #include <vector>
 #include <cassert>
 
@@ -52,7 +52,7 @@ std::vector<int> TopSort(std::vector<std::vector<int>>& graph) {
    std::vector<int> result;
  
    // Construct priority map with lower values as highest priority
-   wilderfield::priority_map<int, int, std::less<int>> pmap;
+   wilderfield::PriorityMap<int, int, std::less<int>> pmap;
  
    // Initialize pmap to have all nodes with indegree 0
    for (int u = 0; u < graph.size(); u++) {
@@ -85,7 +85,7 @@ Typical CMake build, tune commands to your platform/generator
 ```
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake —-build build
-build/tests/priority_map_test -s
+build/tests/PriorityMap_test -s
 build/benchmark/run_benchmarking
 cmake --install build
 ```
