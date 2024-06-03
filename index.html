@@ -95,12 +95,13 @@ usage</h2>
 <div class="line">  ++pmap[7];</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Retrieve and check the top element</span></div>
-<div class="line">  <span class="keyword">auto</span> [key, value] = pmap.top();</div>
+<div class="line">  <span class="keyword">auto</span> [key, value] = pmap.<a class="code" href="classwilderfield_1_1PriorityMap.html#a61af018b3c88f1e43667ab1a10f1c160">Top</a>();</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Top element key: &quot;</span> &lt;&lt; key &lt;&lt; <span class="stringliteral">&quot; with priority: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasswilderfield_1_1PriorityMap_html"><div class="ttname"><a href="classwilderfield_1_1PriorityMap.html">wilderfield::PriorityMap</a></div><div class="ttdoc">Priority map class.</div><div class="ttdef"><b>Definition:</b> priority_map.hpp:42</div></div>
+<div class="ttc" id="aclasswilderfield_1_1PriorityMap_html_a61af018b3c88f1e43667ab1a10f1c160"><div class="ttname"><a href="classwilderfield_1_1PriorityMap.html#a61af018b3c88f1e43667ab1a10f1c160">wilderfield::PriorityMap::Top</a></div><div class="ttdeci">std::pair&lt; KeyType, ValType &gt; Top() const</div><div class="ttdoc">Returns the top element (key-value pair) in the priority map.</div><div class="ttdef"><b>Definition:</b> priority_map.hpp:147</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
 example application</h2>
 <p>Below is an example application illustrating topological sort with Khan's algorithm and a priority map:</p>
@@ -128,8 +129,8 @@ example application</h2>
 <div class="line">   }</div>
 <div class="line"> </div>
 <div class="line">   <span class="comment">// Iterate over nodes by smallest indegree</span></div>
-<div class="line">   <span class="keywordflow">while</span> (!pmap.empty()) {</div>
-<div class="line">     <span class="keyword">auto</span> [u, min_val] = pmap.top(); pmap.pop();</div>
+<div class="line">   <span class="keywordflow">while</span> (!pmap.<a class="code" href="classwilderfield_1_1PriorityMap.html#aa801d4fff645dfb80983ae830b6ced6b">Empty</a>()) {</div>
+<div class="line">     <span class="keyword">auto</span> [u, min_val] = pmap.<a class="code" href="classwilderfield_1_1PriorityMap.html#a61af018b3c88f1e43667ab1a10f1c160">Top</a>(); pmap.<a class="code" href="classwilderfield_1_1PriorityMap.html#af629a5a48a269ed88ec4630f91d9b9a7">Pop</a>();</div>
 <div class="line">     assert(min_val == 0); <span class="comment">// If not the graph has a cycle</span></div>
 <div class="line">     result.push_back(u);</div>
 <div class="line">     <span class="keywordflow">for</span> (<span class="keyword">auto</span> v : graph[u]) { <span class="comment">// Decrease indegrees after removing node u</span></div>
@@ -139,11 +140,13 @@ example application</h2>
 <div class="line"> </div>
 <div class="line">   <span class="keywordflow">return</span> result;</div>
 <div class="line">}</div>
+<div class="ttc" id="aclasswilderfield_1_1PriorityMap_html_aa801d4fff645dfb80983ae830b6ced6b"><div class="ttname"><a href="classwilderfield_1_1PriorityMap.html#aa801d4fff645dfb80983ae830b6ced6b">wilderfield::PriorityMap::Empty</a></div><div class="ttdeci">bool Empty() const</div><div class="ttdoc">Checks whether the priority map is empty.</div><div class="ttdef"><b>Definition:</b> priority_map.hpp:74</div></div>
+<div class="ttc" id="aclasswilderfield_1_1PriorityMap_html_af629a5a48a269ed88ec4630f91d9b9a7"><div class="ttname"><a href="classwilderfield_1_1PriorityMap.html#af629a5a48a269ed88ec4630f91d9b9a7">wilderfield::PriorityMap::Pop</a></div><div class="ttdeci">void Pop()</div><div class="ttdoc">Removes the top element from the priority map.</div><div class="ttdef"><b>Definition:</b> priority_map.hpp:161</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 build, test, benchmark, install</h1>
 <p>Typical CMake build, tune commands to your platform/generator </p><div class="fragment"><div class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</div>
 <div class="line">cmake —-build build</div>
-<div class="line">build/tests/PriorityMap_test -s</div>
+<div class="line">build/tests/priority_map_test -s</div>
 <div class="line">build/benchmark/run_benchmarking</div>
 <div class="line">cmake --install build</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
