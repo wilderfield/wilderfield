@@ -13,6 +13,7 @@
 #define INCLUDE_WILDERFIELD_PRIORITY_MAP_HPP_
 
 #include <algorithm>
+#include <cstdint>
 #include <functional>
 #include <iterator>
 #include <list>
@@ -66,26 +67,26 @@ class PriorityMap final {
   ValType val(const KeyType& key) const { return *(keys_.at(key)); }
 
  public:
-  size_t size() const {
+  std::size_t Size() const {
     return keys_.size();
   }  ///< Returns the number of unique keys in the priority map.
 
-  bool empty() const {
+  bool Empty() const {
     return keys_.empty();
   }  ///< Checks whether the priority map is empty.
 
-  size_t count(const KeyType& key) const {
+  std::size_t Count(const KeyType& key) const {
     return keys_.count(key);
   }  ///< Returns the count of a particular key in the map.
 
-  std::pair<KeyType, ValType> top()
+  std::pair<KeyType, ValType> Top()
       const;  ///< Returns the top element (key-value pair) in the priority map.
 
-  size_t erase(
+  std::size_t Erase(
       const KeyType& key);  ///< Erases key from the priority map. Returns the
                             ///< number of elements removed (0 or 1).
 
-  void pop();  ///< Removes the top element from the priority map.
+  void Pop();  ///< Removes the top element from the priority map.
 
   class Proxy;
   Proxy operator[](const KeyType& key);
@@ -123,14 +124,14 @@ class PriorityMap final {
 
     void operator=(const ValType& val) { pm->Update(key, val); }
 
-    explicit operator ValType() const { return pm->val(key); }
+    operator ValType() const { return pm->val(key); }
   };
 };
 
 // Out-of-line implementation of PriorityMap methods
 
 template <typename KeyType, typename ValType, typename Compare, typename Hash>
-size_t PriorityMap<KeyType, ValType, Compare, Hash>::erase(const KeyType& key) {
+std::size_t PriorityMap<KeyType, ValType, Compare, Hash>::Erase(const KeyType& key) {
   if (keys_.find(key) != keys_.end()) {
     auto old_it = keys_[key];
     val_to_keys_[*old_it].erase(key);
@@ -143,7 +144,7 @@ size_t PriorityMap<KeyType, ValType, Compare, Hash>::erase(const KeyType& key) {
 }
 
 template <typename KeyType, typename ValType, typename Compare, typename Hash>
-std::pair<KeyType, ValType> PriorityMap<KeyType, ValType, Compare, Hash>::top()
+std::pair<KeyType, ValType> PriorityMap<KeyType, ValType, Compare, Hash>::Top()
     const {
   if (vals_.empty()) {
     throw std::out_of_range("Can't access top on an empty PriorityMap.");
@@ -157,7 +158,7 @@ std::pair<KeyType, ValType> PriorityMap<KeyType, ValType, Compare, Hash>::top()
 }
 
 template <typename KeyType, typename ValType, typename Compare, typename Hash>
-void PriorityMap<KeyType, ValType, Compare, Hash>::pop() {
+void PriorityMap<KeyType, ValType, Compare, Hash>::Pop() {
   if (vals_.empty()) {
     throw std::out_of_range("Can't pop from empty PriorityMap.");
   }
