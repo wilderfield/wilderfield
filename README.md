@@ -31,7 +31,7 @@ int main() {
   ++pmap[7];
 
   // Retrieve and check the top element
-  auto [key, value] = pmap.top();
+  auto [key, value] = pmap.Top();
   std::cout << "Top element key: " << key << " with priority: " << value << std::endl;
 
   return 0;
@@ -67,8 +67,8 @@ std::vector<int> TopSort(std::vector<std::vector<int>>& graph) {
    }
  
    // Iterate over nodes by smallest indegree
-   while (!pmap.empty()) {
-     auto [u, min_val] = pmap.top(); pmap.pop();
+   while (!pmap.Empty()) {
+     auto [u, min_val] = pmap.Top(); pmap.Pop();
      assert(min_val == 0); // If not the graph has a cycle
      result.push_back(u);
      for (auto v : graph[u]) { // Decrease indegrees after removing node u
@@ -85,7 +85,7 @@ Typical CMake build, tune commands to your platform/generator
 ```
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake —-build build
-build/tests/PriorityMap_test -s
+build/tests/priority_map_test -s
 build/benchmark/run_benchmarking
 cmake --install build
 ```
