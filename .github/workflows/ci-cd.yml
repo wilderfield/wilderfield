@@ -28,15 +28,13 @@ jobs:
     # Step 3: Build the project using CMake
     - name: Build Project
       run: |
-        mkdir build
-        cd build
-        cmake ..
-        make
+        cmake -B build -DBUILD_TESTS=ON -DBUILD_DOCS=ON
+        cmake --build build
 
     # Step 4: Run tests (if you have a testing framework set up)
     - name: Run Tests
       run: |
-        cd build
+        cd build/tests
         ctest
 
     # Step 5: Deploy to GitHub Pages
