@@ -34,7 +34,7 @@ jobs:
     # Step 4: Run tests (if you have a testing framework set up)
     - name: Run Tests
       run: |
-        cd build
+        cd build/tests
         ctest
 
     # Step 5: Deploy to GitHub Pages

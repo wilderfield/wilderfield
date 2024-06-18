@@ -5,8 +5,6 @@ project(wilderfield)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/contrib)
-
 include_directories(include)
 
 option(BUILD_TESTS "Build tests" OFF)

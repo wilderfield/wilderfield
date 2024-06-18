@@ -10,12 +10,14 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
+list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/contrib)
+
 enable_testing()
 
 # Add test cpp file
 add_executable(priority_map_test priority_map_tests.cpp)
 
-target_include_directories(priority_map_test PRIVATE ${Catch2_SOURCE_DIR}/single_include)
+target_include_directories(priority_map_test PRIVATE ${catch2_SOURCE_DIR}/single_include)
 
 # Link to Catch2
 target_link_libraries(priority_map_test Catch2::Catch2)
