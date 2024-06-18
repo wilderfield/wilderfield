@@ -28,8 +28,6 @@ jobs:
     # Step 3: Build the project using CMake
     - name: Build Project
       run: |
-        mkdir build
-        cd build
         cmake -B build -DBUILD_TESTS=ON -DBUILD_DOCS=ON
         cmake --build build
 
