@@ -29,6 +29,8 @@ class UnionFind {
  protected:
   std::unordered_map<T, T> parent_of_;
   std::unordered_map<T, size_t> rank_of_;
+  std::size_t max_rank_ = 0;
+  std::size_t num_cc_ = 0;
 
  public:
   /**
@@ -40,6 +42,7 @@ class UnionFind {
     if (!parent_of_.count(u)) {
       parent_of_[u] = u;
       rank_of_[u] = 1;
+      ++num_cc_;
     }
   }
 
@@ -55,12 +58,15 @@ class UnionFind {
       auto repr_of_u = Find(u);
       auto repr_of_v = Find(v);
       if (repr_of_u != repr_of_v) {
+        --num_cc_;
         if (rank_of_[repr_of_u] >= rank_of_[repr_of_v]) {
           parent_of_[repr_of_v] = repr_of_u;
           rank_of_[repr_of_u] += rank_of_[repr_of_v];
+          max_rank_ = std::max(max_rank_, rank_of_[repr_of_u]);
         } else {
           parent_of_[repr_of_u] = repr_of_v;
           rank_of_[repr_of_v] += rank_of_[repr_of_u];
+          max_rank_ = std::max(max_rank_, rank_of_[repr_of_v]);
         }
       }
     }
@@ -86,12 +92,16 @@ class UnionFind {
    *
    * @return The maximum rank
    */
-  std::size_t GetMaxRank() {
-    size_t result = 0;
-    for (auto& entry : rank_of_) {
-      result = std::max(result, entry.second);
-    }
-    return result;
+  std::size_t GetMaxRank() const {
+    return max_rank_;
+  }
+  /**
+   * @brief Get the number of connected components
+   *
+   * @return The number of connected components
+   */
+  std::size_t GetNumComponents() const {
+    return num_cc_;
   }
 };
 
