@@ -90,9 +90,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a28cf5cfe0bfc88f4b94ae21f8f3546f3"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwilderfield_1_1UnionFind.html#a28cf5cfe0bfc88f4b94ae21f8f3546f3">Find</a> (T u)</td></tr>
 <tr class="memdesc:a28cf5cfe0bfc88f4b94ae21f8f3546f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the representative of a node.  <a href="classwilderfield_1_1UnionFind.html#a28cf5cfe0bfc88f4b94ae21f8f3546f3">More...</a><br /></td></tr>
 <tr class="separator:a28cf5cfe0bfc88f4b94ae21f8f3546f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6deb7c82a20a6e3030ec862e0bfe9fc"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwilderfield_1_1UnionFind.html#af6deb7c82a20a6e3030ec862e0bfe9fc">GetMaxRank</a> ()</td></tr>
-<tr class="memdesc:af6deb7c82a20a6e3030ec862e0bfe9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum rank in the union find structure.  <a href="classwilderfield_1_1UnionFind.html#af6deb7c82a20a6e3030ec862e0bfe9fc">More...</a><br /></td></tr>
-<tr class="separator:af6deb7c82a20a6e3030ec862e0bfe9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd929656d51dcc22dd85956a2c3350c6"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwilderfield_1_1UnionFind.html#afd929656d51dcc22dd85956a2c3350c6">GetMaxRank</a> () const</td></tr>
+<tr class="memdesc:afd929656d51dcc22dd85956a2c3350c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum rank in the union find structure.  <a href="classwilderfield_1_1UnionFind.html#afd929656d51dcc22dd85956a2c3350c6">More...</a><br /></td></tr>
+<tr class="separator:afd929656d51dcc22dd85956a2c3350c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2124e231326cfb2c2bd0fca329a9a87d"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwilderfield_1_1UnionFind.html#a2124e231326cfb2c2bd0fca329a9a87d">GetNumComponents</a> () const</td></tr>
+<tr class="memdesc:a2124e231326cfb2c2bd0fca329a9a87d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of connected components.  <a href="classwilderfield_1_1UnionFind.html#a2124e231326cfb2c2bd0fca329a9a87d">More...</a><br /></td></tr>
+<tr class="separator:a2124e231326cfb2c2bd0fca329a9a87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -102,6 +105,12 @@ std::unordered_map&lt; T, T &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="memitem:a1eda222a3f6c09110519fbdee1faf8b9"><td class="memItemLeft" align="right" valign="top"><a id="a1eda222a3f6c09110519fbdee1faf8b9"></a>
 std::unordered_map&lt; T, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rank_of_</b></td></tr>
 <tr class="separator:a1eda222a3f6c09110519fbdee1faf8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bbee8771efa6ee90f8583b93e276d2b"><td class="memItemLeft" align="right" valign="top"><a id="a8bbee8771efa6ee90f8583b93e276d2b"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>max_rank_</b> = 0</td></tr>
+<tr class="separator:a8bbee8771efa6ee90f8583b93e276d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c43e052037df9b0aeab4f45cbbfcef4"><td class="memItemLeft" align="right" valign="top"><a id="a5c43e052037df9b0aeab4f45cbbfcef4"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>num_cc_</b> = 0</td></tr>
+<tr class="separator:a5c43e052037df9b0aeab4f45cbbfcef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
@@ -153,8 +162,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="af6deb7c82a20a6e3030ec862e0bfe9fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6deb7c82a20a6e3030ec862e0bfe9fc">&#9670;&nbsp;</a></span>GetMaxRank()</h2>
+<a id="afd929656d51dcc22dd85956a2c3350c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd929656d51dcc22dd85956a2c3350c6">&#9670;&nbsp;</a></span>GetMaxRank()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,7 +177,7 @@ template&lt;typename T &gt; </div>
           <td class="memname">std::size_t <a class="el" href="classwilderfield_1_1UnionFind.html">wilderfield::UnionFind</a>&lt; T &gt;::GetMaxRank </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -180,6 +189,36 @@ template&lt;typename T &gt; </div>
 
 <p>Get the maximum rank in the union find structure. </p>
 <dl class="section return"><dt>Returns</dt><dd>The maximum rank </dd></dl>
+
+</div>
+</div>
+<a id="a2124e231326cfb2c2bd0fca329a9a87d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2124e231326cfb2c2bd0fca329a9a87d">&#9670;&nbsp;</a></span>GetNumComponents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="classwilderfield_1_1UnionFind.html">wilderfield::UnionFind</a>&lt; T &gt;::GetNumComponents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the number of connected components. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of connected components </dd></dl>
 
 </div>
 </div>
